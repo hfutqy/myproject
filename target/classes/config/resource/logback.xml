@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration scan="true" scanPeriod="5 minutes" debug="false">
+    <property nickName="catalina.base" value="${catalina.base:-./target}" />
+    <property nickName="logstash.path" value="/opt/tuniu/logs/tomcat/app/${tomcat_app_base}" />
+
+    <!-- 控制台Appender -->
+    <appender nickName="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{32} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender nickName="ROLLING_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${logstash.path}/guide.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${logstash.path}/guide.%d{yyyy-MM-dd}-%i.log</FileNamePattern>
+            <maxHistory>30</maxHistory>
+            <TimeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>50MB</maxFileSize>
+            </TimeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <layout>
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{32} - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+     <!--日志Logger定义-->
+    <!--<logger nickName="com.tuniu.operation.platform.tsg.client.service" level="ERROR"/>-->
+    <!--<logger nickName="org.apache.mina" level="ERROR"/>-->
+    <!--<logger nickName="com.tuniu.vnd.guide.receipt.persistence.GuideReceiptMapper" level="debug"/>-->
+
+    <!--<logger nickName="com.tuniu.operation.platform.tsg.client.service" level="ERROR"/>-->
+    <!--<logger nickName="org.apache.mina" level="ERROR"/>-->
+    <!--<logger nickName="jdbc.sqltiming" level="${logLevel}"/>-->
+    <!--<logger nickName="com.ibatis" level="${logLevel}" />-->
+    <!--<logger nickName="com.ibatis.common.jdbc.SimpleDataSource" level="${logLevel}" />-->
+    <!--<logger nickName="com.ibatis.common.jdbc.ScriptRunner" level="${logLevel}" />-->
+    <!--<logger nickName="com.ibatis.sqlmap.engine.impl.SqlMapClientDelegate"-->
+            <!--level="${logLevel}" />-->
+    <!--<logger nickName="java.sql.Connection" level="${logLevel}" />-->
+    <!--<logger nickName="java.sql.Statement" level="${logLevel}" />-->
+    <!--<logger nickName="java.sql.PreparedStatement" level="${logLevel}" />-->
+    <!--<logger nickName="java.sql.ResultSet" level="${logLevel}" />-->
+    <!--<root level="WARN">-->
+        <!--<appender-ref ref="ROLLING_FILE"/>-->
+        <!--<appender-ref ref="STDOUT"/>-->
+    <!--</root>-->
+
+    <root level="INFO">
+        <appender-ref ref="ROLLING_FILE"/>
+        <appender-ref ref="STDOUT"/>
+    </root>
+</configuration>

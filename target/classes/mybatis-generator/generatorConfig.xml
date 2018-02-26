@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <classPathEntry
+            location="D:\dev\m2\repository\mysql\mysql-connector-java\5.1.36\mysql-connector-java-5.1.36.jar"/>
+    <context id="my" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <property nickName="suppressDate" value="true"/>
+            <property nickName="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://guide-master.db.tuniu-dev.org:3306/guide?zeroDateTimeBehavior=convertToNull&amp;autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=utf-8"
+                        userId="guide_dev"
+                        password="tuniu520"/>
+
+        <javaModelGenerator targetPackage="com.tuniu.vnd.guide.nm.domain.po"
+                            targetProject="src/main/java">
+            <!-- 是否对model添加 构造函数 -->
+            <property nickName="constructorBased" value="false"/>
+            <!-- 是否允许子包，即targetPackage.schemaName.tableName -->
+            <property nickName="enableSubPackages" value="false"/>
+            <!-- 建立的Model对象是否 不可改变  即生成的Model对象不会有 setter方法，只有构造方法 -->
+            <property nickName="immutable" value="false"/>
+            <property nickName="trimStrings" value="false"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="com.tuniu.vnd.guide.nm.persistence"
+                         targetProject="src/main/resources">
+            <property nickName="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+
+        <javaClientGenerator targetPackage="com.tuniu.vnd.guide.nm.persistence"
+                             targetProject="src/main/java" type="XMLMAPPER">
+            <property nickName="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+
+
+        <!--<table schema="guide" tableName="pnb_boss3_order" domainObjectName="Boss3Order"-->
+               <!--enableInsert="true" enableSelectByExample="false" enableDeleteByPrimaryKey="false"-->
+               <!--enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>-->
+
+        <!--<table schema="guide" tableName="pnb_boss3_order_creator" domainObjectName="Boss3OrderCreator"-->
+               <!--enableInsert="true" enableSelectByExample="false" enableDeleteByPrimaryKey="false"-->
+               <!--enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>-->
+
+        <!--<table schema="guide" tableName="pnb_boss3_order_tourist" domainObjectName="Boss3OrderTourist"-->
+               <!--enableInsert="true" enableSelectByExample="false" enableDeleteByPrimaryKey="false"-->
+               <!--enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>-->
+
+        <!--<table schema="guide" tableName="pnb_boss3_product" domainObjectName="Boss3Product"-->
+               <!--enableInsert="true" enableSelectByExample="false" enableDeleteByPrimaryKey="false"-->
+               <!--enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>-->
+
+        <!--<table schema="guide" tableName="pnb_boss3_resource" domainObjectName="Boss3Resource"-->
+               <!--enableInsert="true" enableSelectByExample="false" enableDeleteByPrimaryKey="false"-->
+               <!--enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>-->
+
+        <!--<table schema="guide" tableName="pnb_dict" domainObjectName="Dict"-->
+               <!--enableInsert="true" enableSelectByExample="false" enableDeleteByPrimaryKey="false"-->
+               <!--enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>-->
+
+        <!--<table schema="guide" tableName="pnb_interface_log" domainObjectName="InterfaceLog"-->
+               <!--enableInsert="true" enableSelectByExample="false" enableDeleteByPrimaryKey="false"-->
+               <!--enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>-->
+
+        <!--<table schema="guide" tableName="pnb_operation_log" domainObjectName="OperationLog"-->
+               <!--enableInsert="true" enableSelectByExample="false" enableDeleteByPrimaryKey="false"-->
+               <!--enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>-->
+
+        <!--<table schema="guide" tableName="pnb_order" domainObjectName="Order"-->
+               <!--enableInsert="true" enableSelectByExample="false" enableDeleteByPrimaryKey="false"-->
+               <!--enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>-->
+
+        <!--<table schema="guide" tableName="pnb_product" domainObjectName="Product"-->
+               <!--enableInsert="true" enableSelectByExample="false" enableDeleteByPrimaryKey="false"-->
+               <!--enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>-->
+
+        <!--<table schema="guide" tableName="pnb_product_package" domainObjectName="ProductPackage"-->
+               <!--enableInsert="true" enableSelectByExample="false" enableDeleteByPrimaryKey="false"-->
+               <!--enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>-->
+
+        <!--<table schema="guide" tableName="pnb_product_picture" domainObjectName="ProductPicture"-->
+               <!--enableInsert="true" enableSelectByExample="false" enableDeleteByPrimaryKey="false"-->
+               <!--enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>-->
+
+        <!--<table schema="guide" tableName="pnb_tour_guide" domainObjectName="TourGuide"-->
+               <!--enableInsert="true" enableSelectByExample="false" enableDeleteByPrimaryKey="false"-->
+               <!--enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>-->
+
+        <!--<table schema="guide" tableName="pnb_tour_guide_12301" domainObjectName="TourGuideBasicInfo"-->
+               <!--enableInsert="true" enableSelectByExample="false" enableDeleteByPrimaryKey="false"-->
+               <!--enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>-->
+
+        <!--<table schema="guide" tableName="pnb_tour_guide_album" domainObjectName="TourGuideAlbum"-->
+               <!--enableInsert="true" enableSelectByExample="false" enableDeleteByPrimaryKey="false"-->
+               <!--enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>-->
+
+        <table schema="guide" tableName="guide_expert_area" domainObjectName="GuideExpertAreaPo"
+               enableInsert="true" enableSelectByExample="false" enableDeleteByPrimaryKey="false"
+               enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>
+
+    </context>
+</generatorConfiguration>
