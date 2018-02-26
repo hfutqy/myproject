@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qiyu.mywebsite.persistence.UserInfoMapper">
+    <resultMap id="BaseResultMap" type="com.qiyu.mywebsite.po.UserInfoPo">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <id column="nick_name" property="nickName" jdbcType="VARCHAR"/>
+        <id column="password" property="password" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,nick_name,password
+    </sql>
+
+    <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from user_info
+        where id = #{id}
+        and del_flag = 0
+    </select>
+</mapper>
