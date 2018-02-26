@@ -1,4 +1,4 @@
-package com.qiyu.mywebsite.base;
+package com.qiyu.mywebsite.vo;
 
 public class ResponseVo {
     private boolean success;

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.qiyu.mywebsite.persistence.UserInfoMapper">
+<mapper namespace="com.qiyu.mywebsite.dao.UserInfoMapper">
     <resultMap id="BaseResultMap" type="com.qiyu.mywebsite.po.UserInfoPo">
         <id column="id" property="id" jdbcType="INTEGER"/>
         <id column="nick_name" property="nickName" jdbcType="VARCHAR"/>

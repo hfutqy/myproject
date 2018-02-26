@@ -1,4 +1,4 @@
-package com.qiyu.mywebsite.persistence;
+package com.qiyu.mywebsite.dao;
 
 import com.qiyu.mywebsite.po.UserInfoPo;
 
