@@ -7,9 +7,11 @@ import com.qiyu.mywebsite.service.IUserInfoService;
 import com.qiyu.mywebsite.utils.ResponseVoUtils;
 import com.qiyu.mywebsite.vo.ResponseVo;
 import com.qiyu.mywebsite.vo.UserInfoVo;
+import com.qiyu.mywebsite.vo.UserRegisterVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -53,9 +55,17 @@ public class UserInfoController extends BaseController {
         ResponseVo vo = new ResponseVo();
         try {
             String ro = getData(request, response);
-            LOGGER.error("xxx");
+            UserRegisterVo userRegisterVo = JSON.parseObject(ro, UserRegisterVo.class);
+            //昵称不为空 and 密码不为空 and 确认密码和密码相同
+            if (!StringUtils.isEmpty(userRegisterVo.getNickName())
+                    && !StringUtils.isEmpty(userRegisterVo.getPassword())
+                    && userRegisterVo.getPassword().equals(userRegisterVo.getPasswordConfirm())) {
+                vo = userInfoService.register(userRegisterVo);
+            }else {
+                vo = ResponseVoUtils.buildErrorResponseVo(ErrorCode.PARAM_ERROR);
+            }
         } catch (Exception e) {
-            LOGGER.error("error in UserInfoController.queryUserInfo", e);
+            LOGGER.error("error in UserInfoController.register", e);
             vo = ResponseVoUtils.buildErrorResponseVo(ErrorCode.SYSTEM_ERROR);
         } finally {
             this.sendData(response, vo);
@@ -71,7 +81,7 @@ public class UserInfoController extends BaseController {
         try {
             String ro = getData(request, response);
         } catch (Exception e) {
-            LOGGER.error("error in UserInfoController.queryUserInfo", e);
+            LOGGER.error("error in UserInfoController.login", e);
             vo = ResponseVoUtils.buildErrorResponseVo(ErrorCode.SYSTEM_ERROR);
         } finally {
             this.sendData(response, vo);

@@ -1,23 +1,13 @@
 package com.qiyu.mywebsite.vo;
 
-import com.qiyu.mywebsite.base.BaseVo;
-
 /**
- * 数据传输层bean
- * userINfo
+ * 用户注册bean
+ * Created by qiyu on 2018/2/27.
  */
-public class UserInfoVo extends BaseVo{
-    private int id;
+public class UserRegisterVo {
     private String nickName;
     private String password;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+    private String passwordConfirm;
 
     public String getNickName() {
         return nickName;
@@ -33,5 +23,13 @@ public class UserInfoVo extends BaseVo{
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getPasswordConfirm() {
+        return passwordConfirm;
+    }
+
+    public void setPasswordConfirm(String passwordConfirm) {
+        this.passwordConfirm = passwordConfirm;
     }
 }

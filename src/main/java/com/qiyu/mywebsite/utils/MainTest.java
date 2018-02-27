@@ -4,13 +4,21 @@ package com.qiyu.mywebsite.utils;
  * 测试类
  */
 public class MainTest {
-    public static void main(String[] agrs) {
-        int[] arr = {2, 5, 1, 7, 3, 9, 6, 12, 3, 6, 1};
-        quickSort(arr, 0, arr.length - 1);
-        for (int e : arr)
-            System.out.print(e + " ");
-    }
+//    public static void main(String[] agrs) {
+//        int[] arr = {2, 5, 1, 7, 3, 9, 6, 12, 3, 6, 1};
+//        quickSort(arr, 0, arr.length - 1);
+//        for (int e : arr)
+//            System.out.print(e + " ");
+//    }
 
+    /**
+     * 加密结果
+     */
+    public static void main(String[] agrs) {
+        String str = "123456";
+        String result = MD5EncryptionUtils.string2MD5(str);
+        System.out.print(result);
+    }
     /**
      * 快排
      */

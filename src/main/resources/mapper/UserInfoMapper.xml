@@ -18,4 +18,64 @@
         where id = #{id}
         and del_flag = 0
     </select>
+
+    <select id="selectOnCondition" resultMap="BaseResultMap" parameterType="com.qiyu.mywebsite.vo.UserInfoVo">
+        select
+        <include refid="Base_Column_List"/>
+        from user_info
+        where 1=1
+        <if test="id!=null and id != 0">
+            and id=#{id}
+        </if>
+        <if test="nickName!=null">
+            and nick_name=#{nickName}
+        </if>
+        and del_flag = 0
+    </select>
+
+    <insert id="insertOnCondition" parameterType="com.qiyu.mywebsite.vo.UserInfoVo">
+        <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT IN user_info
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="nickName != null" >
+                user_id,
+            </if>
+            <if test="password != null" >
+                user_name,
+            </if>
+            <if test="delFlag != null" >
+                del_flag,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="userId != null" >
+                #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="userName != null" >
+                #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="addUid != null" >
+                #{addUid,jdbcType=INTEGER},
+            </if>
+            <if test="addTime != null" >
+                #{addTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateUid != null" >
+                #{updateUid,jdbcType=INTEGER},
+            </if>
+            <if test="updateTime != null" >
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="remark != null" >
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="delFlag != null" >
+                #{delFlag,jdbcType=TINYINT},
+            </if>
+        </trim>
+    </insert>
+
+
 </mapper>

@@ -19,6 +19,8 @@ public class MD5EncryptionUtils {
      * MD5加码 生成32位md5码
      */
     public static String string2MD5(String inStr) {
+        //加密盐qiyu
+        String str =inStr + "qiyu";
         MessageDigest md5;
         try {
             md5 = MessageDigest.getInstance("MD5");
@@ -26,7 +28,7 @@ public class MD5EncryptionUtils {
             LOGGER.error("MD5Util exception:", e);
             return "";
         }
-        char[] charArray = inStr.toCharArray();
+        char[] charArray = str.toCharArray();
         byte[] byteArray = new byte[charArray.length];
 
         for (int i = 0; i < charArray.length; i++)
