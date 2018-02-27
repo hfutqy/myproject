@@ -36,6 +36,10 @@ public class UserInfoController extends BaseController {
         ResponseVo vo = new ResponseVo();
         try {
             String ro = getData(request, response);
+            if (ro == null) {
+                vo = ResponseVoUtils.buildErrorResponseVo(ErrorCode.PARAM_ERROR);
+                return;
+            }
             UserInfoVo userInfoVo = JSON.parseObject(ro, UserInfoVo.class);
             UserInfoVo info = userInfoService.queryUserInfo(userInfoVo.getId());
             vo = ResponseVoUtils.buildSuccessResponseVo(info);
@@ -61,7 +65,7 @@ public class UserInfoController extends BaseController {
                     && !StringUtils.isEmpty(userRegisterVo.getPassword())
                     && userRegisterVo.getPassword().equals(userRegisterVo.getPasswordConfirm())) {
                 vo = userInfoService.register(userRegisterVo);
-            }else {
+            } else {
                 vo = ResponseVoUtils.buildErrorResponseVo(ErrorCode.PARAM_ERROR);
             }
         } catch (Exception e) {
