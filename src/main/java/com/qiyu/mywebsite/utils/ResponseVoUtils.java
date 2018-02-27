@@ -9,11 +9,12 @@ import com.qiyu.mywebsite.vo.ResponseVo;
  */
 public class ResponseVoUtils {
 
-    public static ResponseVo buildSuccessResponseVo(){
+    public static ResponseVo buildSuccessResponseVo(Object data){
         ResponseVo responseVo = new ResponseVo();
         responseVo.setSuccess(true);
         responseVo.setErrorCode(ErrorCode.SUCCESS.getKey());
         responseVo.setMessage(ErrorCode.SUCCESS.getValue());
+        responseVo.setData(data);
         return responseVo;
     }
 

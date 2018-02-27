@@ -36,7 +36,7 @@ public class UserInfoController extends BaseController {
             String ro = getData(request, response);
             UserInfoVo userInfoVo = JSON.parseObject(ro, UserInfoVo.class);
             UserInfoVo info = userInfoService.queryUserInfo(userInfoVo.getId());
-            vo.setData(info);
+            vo = ResponseVoUtils.buildSuccessResponseVo(info);
         } catch (Exception e) {
             LOGGER.error("error in UserInfoController.queryUserInfo", e);
             vo = ResponseVoUtils.buildErrorResponseVo(ErrorCode.SYSTEM_ERROR);
