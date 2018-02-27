@@ -44,4 +44,37 @@ public class UserInfoController extends BaseController {
             this.sendData(response, vo);
         }
     }
+
+    /**
+     * 用户注册功能
+     */
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    public void register(HttpServletRequest request, HttpServletResponse response) {
+        ResponseVo vo = new ResponseVo();
+        try {
+            String ro = getData(request, response);
+            LOGGER.error("xxx");
+        } catch (Exception e) {
+            LOGGER.error("error in UserInfoController.queryUserInfo", e);
+            vo = ResponseVoUtils.buildErrorResponseVo(ErrorCode.SYSTEM_ERROR);
+        } finally {
+            this.sendData(response, vo);
+        }
+    }
+
+    /**
+     * 用户登录功能
+     */
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public void login(HttpServletRequest request, HttpServletResponse response) {
+        ResponseVo vo = new ResponseVo();
+        try {
+            String ro = getData(request, response);
+        } catch (Exception e) {
+            LOGGER.error("error in UserInfoController.queryUserInfo", e);
+            vo = ResponseVoUtils.buildErrorResponseVo(ErrorCode.SYSTEM_ERROR);
+        } finally {
+            this.sendData(response, vo);
+        }
+    }
 }

@@ -1,4 +1,4 @@
-package com.qiyu.mywebsite.base;
+package com.qiyu.mywebsite.utils;
 
 /**
  * 测试类
