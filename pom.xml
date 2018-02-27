@@ -7,6 +7,8 @@
     <groupId>com.qiyu</groupId>
     <artifactId>mywebsite</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <name>my website for SSM</name>
+    <packaging>war</packaging>
 
     <dependencies>
 
@@ -142,29 +144,16 @@
             <version>3.2</version>
         </dependency>
 
-        <!-- base64加解密工具 -->
+        <!-- 阿里巴巴fastJson -->
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>3.4</version>
-        </dependency>
-        <dependency>
-            <groupId>commons-codec</groupId>
-            <artifactId>commons-codec</artifactId>
-            <version>1.11</version>
-        </dependency>
-
-        <!-- jsonObject -->
-        <dependency>
-            <groupId>net.sf.json-lib</groupId>
-            <artifactId>json-lib</artifactId>
-            <version>2.4</version>
-            <classifier>jdk13</classifier>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.4</version>
         </dependency>
 
 
     </dependencies>
     <build>
-        <finalName>mywebsite</finalName>
+        <finalName>${artifactId}-${version}</finalName>
     </build>
 </project>

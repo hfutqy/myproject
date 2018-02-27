@@ -1,6 +1,10 @@
 package com.qiyu.mywebsite.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.qiyu.mywebsite.base.BaseController;
+import com.qiyu.mywebsite.constant.ErrorCode;
 import com.qiyu.mywebsite.service.IUserInfoService;
+import com.qiyu.mywebsite.utils.ResponseVoUtils;
 import com.qiyu.mywebsite.vo.ResponseVo;
 import com.qiyu.mywebsite.vo.UserInfoVo;
 import org.slf4j.Logger;
@@ -30,11 +34,12 @@ public class UserInfoController extends BaseController {
         ResponseVo vo = new ResponseVo();
         try {
             String ro = getData(request, response);
-            UserInfoVo userInfoVo = toBean(ro, UserInfoVo.class);
+            UserInfoVo userInfoVo = JSON.parseObject(ro, UserInfoVo.class);
             UserInfoVo info = userInfoService.queryUserInfo(userInfoVo.getId());
             vo.setData(info);
         } catch (Exception e) {
             LOGGER.error("error in UserInfoController.queryUserInfo", e);
+            vo = ResponseVoUtils.buildErrorResponseVo(ErrorCode.SYSTEM_ERROR);
         } finally {
             this.sendData(response, vo);
         }

@@ -1,16 +1,16 @@
 package com.qiyu.mywebsite.vo;
 
 public class ResponseVo {
-    private boolean success;
+    private Boolean success;
     private String message;
-    private String errorCode;
+    private Integer errorCode;
     private Object data;
 
-    public boolean isSuccess() {
+    public Boolean isSuccess() {
         return success;
     }
 
-    public void setSuccess(boolean success) {
+    public void setSuccess(Boolean success) {
         this.success = success;
     }
 
@@ -22,11 +22,11 @@ public class ResponseVo {
         this.message = message;
     }
 
-    public String getErrorCode() {
+    public Integer getErrorCode() {
         return errorCode;
     }
 
-    public void setErrorCode(String errorCode) {
+    public void setErrorCode(Integer errorCode) {
         this.errorCode = errorCode;
     }
 
