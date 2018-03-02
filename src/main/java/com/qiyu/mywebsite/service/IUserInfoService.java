@@ -11,8 +11,6 @@ public interface IUserInfoService {
 
     /**
      * 根据id查询用户信息
-     * @param id
-     * @return
      */
     UserInfoVo queryUserInfo(Integer id);
 
