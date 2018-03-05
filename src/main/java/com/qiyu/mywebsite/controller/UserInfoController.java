@@ -1,7 +1,6 @@
 package com.qiyu.mywebsite.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.qiyu.mywebsite.base.BaseController;
 import com.qiyu.mywebsite.constant.ErrorCode;
 import com.qiyu.mywebsite.service.IUserInfoService;
 import com.qiyu.mywebsite.utils.ResponseVoUtils;
@@ -35,12 +34,12 @@ public class UserInfoController extends BaseController {
     public void queryUserInfo(HttpServletRequest request, HttpServletResponse response) {
         ResponseVo vo = new ResponseVo();
         try {
-            String ro = getData(request, response);
-            if (ro == null) {
+            String requestVo = getData(request, response);
+            if (requestVo == null) {
                 vo = ResponseVoUtils.buildErrorResponseVo(ErrorCode.PARAM_ERROR);
                 return;
             }
-            UserInfoVo userInfoVo = JSON.parseObject(ro, UserInfoVo.class);
+            UserInfoVo userInfoVo = JSON.parseObject(requestVo, UserInfoVo.class);
             UserInfoVo info = userInfoService.queryUserInfo(userInfoVo.getId());
             vo = ResponseVoUtils.buildSuccessResponseVo(info);
         } catch (Exception e) {
@@ -58,8 +57,8 @@ public class UserInfoController extends BaseController {
     public void register(HttpServletRequest request, HttpServletResponse response) {
         ResponseVo vo = new ResponseVo();
         try {
-            String ro = getData(request, response);
-            UserRegisterVo userRegisterVo = JSON.parseObject(ro, UserRegisterVo.class);
+            String requestVo = getData(request, response);
+            UserRegisterVo userRegisterVo = JSON.parseObject(requestVo, UserRegisterVo.class);
             //昵称不为空 and 密码不为空 and 确认密码和密码相同
             if (!StringUtils.isEmpty(userRegisterVo.getNickName())
                     && !StringUtils.isEmpty(userRegisterVo.getPassword())

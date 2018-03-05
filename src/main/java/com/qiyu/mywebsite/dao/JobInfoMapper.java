@@ -2,7 +2,7 @@ package com.qiyu.mywebsite.dao;
 
 import com.qiyu.mywebsite.po.JobInfoPo;
 
-public interface JobInfoPoMapper {
+public interface JobInfoMapper {
     int deleteByPrimaryKey(Integer id);
 
     int insert(JobInfoPo record);

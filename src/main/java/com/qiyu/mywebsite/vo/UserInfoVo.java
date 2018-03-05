@@ -1,7 +1,5 @@
 package com.qiyu.mywebsite.vo;
 
-import com.qiyu.mywebsite.base.BaseVo;
-
 /**
  * 数据传输层bean
  * userINfo

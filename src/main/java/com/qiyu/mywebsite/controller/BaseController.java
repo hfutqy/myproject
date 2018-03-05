@@ -1,7 +1,8 @@
-package com.qiyu.mywebsite.base;
+package com.qiyu.mywebsite.controller;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.qiyu.mywebsite.utils.BaseRestService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.Base64Utils;

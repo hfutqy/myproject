@@ -44,7 +44,7 @@
         </javaClientGenerator>
 
         <!-- 相关表的配置 -->
-        <table tableName="job_info" domainObjectName="JobInfoPo" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+        <table tableName="job_info" domainObjectName="JobInfo" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
                enableUpdateByExample="false"/>
     </context>
 </generatorConfiguration>

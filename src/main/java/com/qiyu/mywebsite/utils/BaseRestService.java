@@ -1,4 +1,4 @@
-package com.qiyu.mywebsite.base;
+package com.qiyu.mywebsite.utils;
 
 import com.alibaba.fastjson.util.Base64;
 import org.springframework.util.Base64Utils;

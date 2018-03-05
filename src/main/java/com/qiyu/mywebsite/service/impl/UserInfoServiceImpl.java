@@ -25,7 +25,6 @@ public class UserInfoServiceImpl implements IUserInfoService {
     @Resource
     private UserInfoMapper userInfoMapper;
 
-
     public UserInfoVo queryUserInfo(Integer id) {
         UserInfoPo userInfoPo = userInfoMapper.selectById(id);
         UserInfoVo userInfoVo = new UserInfoVo();

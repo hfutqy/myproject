@@ -1,9 +1,8 @@
 package com.qiyu.mywebsite.constant;
 
 public enum UserType {
-    USER(0 , "普通用户"),
-    ADMIN(1, "管理员"),
-    ;
+    USER(0, "普通用户"),
+    ADMIN(1, "管理员");
 
 
     private Integer key;

@@ -1,12 +1,12 @@
 package com.qiyu.mywebsite.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.qiyu.mywebsite.base.BaseController;
 import com.qiyu.mywebsite.constant.ErrorCode;
+import com.qiyu.mywebsite.service.IJobInfoService;
 import com.qiyu.mywebsite.service.IUserInfoService;
 import com.qiyu.mywebsite.utils.ResponseVoUtils;
+import com.qiyu.mywebsite.vo.QueryJobInfoListVo;
 import com.qiyu.mywebsite.vo.ResponseVo;
-import com.qiyu.mywebsite.vo.UserInfoVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -28,20 +28,19 @@ public class JobInfoController extends BaseController{
     private static final Logger LOGGER = LoggerFactory.getLogger(JobInfoController.class);
 
     @Resource
-    private IUserInfoService userInfoService;
+    private IJobInfoService jobInfoService;
 
     @RequestMapping(value = "/queryList", method = RequestMethod.GET)
-    public void queryUserInfo(HttpServletRequest request, HttpServletResponse response) {
+    public void queryJobInfoList(HttpServletRequest request, HttpServletResponse response) {
         ResponseVo vo = new ResponseVo();
         try {
-            String ro = getData(request, response);
-            if (ro == null) {
+            String requestVo = getData(request, response);
+            if (requestVo == null) {
                 vo = ResponseVoUtils.buildErrorResponseVo(ErrorCode.PARAM_ERROR);
                 return;
             }
-            UserInfoVo userInfoVo = JSON.parseObject(ro, UserInfoVo.class);
-            UserInfoVo info = userInfoService.queryUserInfo(userInfoVo.getId());
-            vo = ResponseVoUtils.buildSuccessResponseVo(info);
+            QueryJobInfoListVo queryVo = JSON.parseObject(requestVo, QueryJobInfoListVo.class);
+            vo = ResponseVoUtils.buildSuccessResponseVo(jobInfoService.queryList(queryVo));
         } catch (Exception e) {
             LOGGER.error("error in UserInfoController.queryUserInfo", e);
             vo = ResponseVoUtils.buildErrorResponseVo(ErrorCode.SYSTEM_ERROR);
