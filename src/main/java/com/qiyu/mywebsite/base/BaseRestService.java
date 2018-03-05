@@ -22,29 +22,26 @@ public class BaseRestService {
     }
 
     public String getRestData() throws IOException {
-        if(null == this.request) {
+        if (null == this.request) {
             return null;
         } else {
             String method = this.request.getMethod();
             String ret;
-            if(!method.equalsIgnoreCase("GET") && !method.equalsIgnoreCase("DELETE")) {
+            if (!method.equalsIgnoreCase("GET") && !method.equalsIgnoreCase("DELETE")) {
                 ret = this.getBodyData();
             } else {
                 ret = this.request.getQueryString();
             }
-            return null == ret?null: new String(Base64Utils.decodeFromString(ret));
+            return null == ret ? null : new String(Base64Utils.decodeFromString(ret));
         }
     }
 
     private String getBodyData() throws IOException {
-        StringBuffer data = new StringBuffer();
-        String line = null;
-        BufferedReader reader = null;
-
+        StringBuilder data = new StringBuilder();
         try {
-            reader = this.request.getReader();
-
-            while(null != (line = reader.readLine())) {
+            BufferedReader reader = this.request.getReader();
+            String line = reader.readLine();
+            while (null != line) {
                 data.append(line);
             }
         } catch (IOException var8) {

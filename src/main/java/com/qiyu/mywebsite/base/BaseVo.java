@@ -18,6 +18,8 @@ public class BaseVo {
 
     private int delFlag;
 
+    private String remark;
+
     public Date getAddTime() {
         return addTime;
     }
@@ -40,5 +42,13 @@ public class BaseVo {
 
     public void setDelFlag(int delFlag) {
         this.delFlag = delFlag;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 }
