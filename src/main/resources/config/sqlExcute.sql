@@ -33,4 +33,5 @@ CREATE TABLE `job_info` (
   `remark` varchar(50) NOT NULL DEFAULT '' COMMENT '备注',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='求职信息列表';
-INSERT INTO `job_info` VALUES ('1', 'Java工程师', '1', '南京', '1', '3', '4', '8', '10');
+INSERT INTO `job_info` (`id`, `job_name`, `job_type`, `job_location`, `work_time_beg`, `work_time_end`, `education`, `salary_beg`, `salary_end`)
+VALUES ('1', 'Java工程师', '1', '南京', '1', '3', '4', '8', '10');
