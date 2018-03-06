@@ -2,13 +2,12 @@ package com.qiyu.mywebsite.service.impl;
 
 import com.qiyu.mywebsite.constant.EducationLevel;
 import com.qiyu.mywebsite.constant.JobType;
+import com.qiyu.mywebsite.dao.JobInfoDetailMapper;
 import com.qiyu.mywebsite.dao.JobInfoMapper;
+import com.qiyu.mywebsite.po.JobInfoDetailPo;
 import com.qiyu.mywebsite.po.JobInfoPo;
 import com.qiyu.mywebsite.service.IJobInfoService;
-import com.qiyu.mywebsite.vo.BaseQueryVo;
-import com.qiyu.mywebsite.vo.DataListVo;
-import com.qiyu.mywebsite.vo.JobInfoVo;
-import com.qiyu.mywebsite.vo.QueryJobInfoListVo;
+import com.qiyu.mywebsite.vo.*;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
@@ -26,6 +25,8 @@ public class JobInfoServiceImpl implements IJobInfoService {
 
     @Resource
     private JobInfoMapper jobInfoMapper;
+    @Resource
+    private JobInfoDetailMapper jobInfoDetailMapper;
 
     public DataListVo queryList(QueryJobInfoListVo vo) {
         DataListVo dataListVo = new DataListVo();
@@ -51,14 +52,22 @@ public class JobInfoServiceImpl implements IJobInfoService {
         return dataListVo;
     }
 
-    public JobInfoVo queryDetail(BaseQueryVo vo) {
-        JobInfoVo jobInfoVo = new JobInfoVo();
+    public JobInfoDetailVo queryDetail(BaseQueryVo vo) {
+        //先查询职位基础信息
+        JobInfoDetailVo jobInfoDetailVo = new JobInfoDetailVo();
         JobInfoPo jobInfoPo = jobInfoMapper.selectByPrimaryKey(vo.getId());
         if (jobInfoPo != null) {
-            BeanUtils.copyProperties(jobInfoPo, jobInfoVo);
-            jobInfoVo.setJobTypeName(JobType.getValueByKey(jobInfoPo.getJobType()));
-            jobInfoVo.setEducationName(EducationLevel.getValueByKey(jobInfoPo.getEducation()));
+            BeanUtils.copyProperties(jobInfoPo, jobInfoDetailVo);
+            jobInfoDetailVo.setJobTypeName(JobType.getValueByKey(jobInfoPo.getJobType()));
+            jobInfoDetailVo.setEducationName(EducationLevel.getValueByKey(jobInfoPo.getEducation()));
         }
-        return jobInfoVo;
+        //查询职位详细信息
+        JobInfoDetailPo jobInfoDetailPo = jobInfoDetailMapper.selectByPrimaryKey(vo.getId());
+        if (jobInfoDetailPo != null) {
+            BeanUtils.copyProperties(jobInfoDetailPo, jobInfoDetailVo);
+            //还原主键id
+            jobInfoDetailVo.setId(vo.getId());
+        }
+        return jobInfoDetailVo;
     }
 }

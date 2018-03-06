@@ -43,8 +43,8 @@
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
 
-        <!-- 相关表的配置,去掉一些用不上的dao接口 -->
-        <table tableName="job_info" domainObjectName="JobInfo"
+        <!-- 相关表的配置,去掉一些用不上的dao接口 domainObjectName="JobInfo"-->
+        <table tableName="job_info_detail"
                enableDeleteByPrimaryKey="false"
                enableCountByExample="false"
                enableDeleteByExample="false"

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qiyu.mywebsite.dao.JobInfoDetailMapper">
+  <resultMap id="BaseResultMap" type="com.qiyu.mywebsite.po.JobInfoDetailPo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="job_id" jdbcType="INTEGER" property="jobId" />
+    <result column="job_company_descrip" jdbcType="VARCHAR" property="jobCompanyDescrip" />
+    <result column="work_place" jdbcType="VARCHAR" property="workPlace" />
+    <result column="job_poster" jdbcType="VARCHAR" property="jobPoster" />
+    <result column="job_poster_position" jdbcType="VARCHAR" property="jobPosterPosition" />
+    <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="del_flag" jdbcType="TINYINT" property="delFlag" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="job_company" jdbcType="LONGVARCHAR" property="jobCompany" />
+    <result column="job_descrip" jdbcType="LONGVARCHAR" property="jobDescrip" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, job_id, job_company_descrip, work_place, job_poster, job_poster_position,job_company, job_descrip, add_time,
+    update_time, del_flag, remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    from job_info_detail
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <insert id="insert" parameterType="com.qiyu.mywebsite.po.JobInfoDetailPo">
+    insert into job_info_detail (id, job_id, job_company_descrip, 
+      work_place, job_poster, job_poster_position, 
+      add_time, update_time, del_flag, 
+      remark, job_company, job_descrip
+      )
+    values (#{id,jdbcType=INTEGER}, #{jobId,jdbcType=INTEGER}, #{jobCompanyDescrip,jdbcType=VARCHAR}, 
+      #{workPlace,jdbcType=VARCHAR}, #{jobPoster,jdbcType=VARCHAR}, #{jobPosterPosition,jdbcType=VARCHAR}, 
+      #{addTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{delFlag,jdbcType=TINYINT}, 
+      #{remark,jdbcType=VARCHAR}, #{jobCompany,jdbcType=LONGVARCHAR}, #{jobDescrip,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.qiyu.mywebsite.po.JobInfoDetailPo">
+    insert into job_info_detail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="jobId != null">
+        job_id,
+      </if>
+      <if test="jobCompanyDescrip != null">
+        job_company_descrip,
+      </if>
+      <if test="workPlace != null">
+        work_place,
+      </if>
+      <if test="jobPoster != null">
+        job_poster,
+      </if>
+      <if test="jobPosterPosition != null">
+        job_poster_position,
+      </if>
+      <if test="addTime != null">
+        add_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="delFlag != null">
+        del_flag,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="jobCompany != null">
+        job_company,
+      </if>
+      <if test="jobDescrip != null">
+        job_descrip,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="jobId != null">
+        #{jobId,jdbcType=INTEGER},
+      </if>
+      <if test="jobCompanyDescrip != null">
+        #{jobCompanyDescrip,jdbcType=VARCHAR},
+      </if>
+      <if test="workPlace != null">
+        #{workPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="jobPoster != null">
+        #{jobPoster,jdbcType=VARCHAR},
+      </if>
+      <if test="jobPosterPosition != null">
+        #{jobPosterPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delFlag != null">
+        #{delFlag,jdbcType=TINYINT},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="jobCompany != null">
+        #{jobCompany,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="jobDescrip != null">
+        #{jobDescrip,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qiyu.mywebsite.po.JobInfoDetailPo">
+    update job_info_detail
+    <set>
+      <if test="jobId != null">
+        job_id = #{jobId,jdbcType=INTEGER},
+      </if>
+      <if test="jobCompanyDescrip != null">
+        job_company_descrip = #{jobCompanyDescrip,jdbcType=VARCHAR},
+      </if>
+      <if test="workPlace != null">
+        work_place = #{workPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="jobPoster != null">
+        job_poster = #{jobPoster,jdbcType=VARCHAR},
+      </if>
+      <if test="jobPosterPosition != null">
+        job_poster_position = #{jobPosterPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        add_time = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delFlag != null">
+        del_flag = #{delFlag,jdbcType=TINYINT},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="jobCompany != null">
+        job_company = #{jobCompany,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="jobDescrip != null">
+        job_descrip = #{jobDescrip,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

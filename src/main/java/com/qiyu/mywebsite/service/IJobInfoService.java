@@ -2,6 +2,7 @@ package com.qiyu.mywebsite.service;
 
 import com.qiyu.mywebsite.vo.BaseQueryVo;
 import com.qiyu.mywebsite.vo.DataListVo;
+import com.qiyu.mywebsite.vo.JobInfoDetailVo;
 import com.qiyu.mywebsite.vo.JobInfoVo;
 import com.qiyu.mywebsite.vo.QueryJobInfoListVo;
 
@@ -21,5 +22,5 @@ public interface IJobInfoService {
      * @param vo
      * @return
      */
-    JobInfoVo queryDetail(BaseQueryVo vo);
+    JobInfoDetailVo queryDetail(BaseQueryVo vo);
 }
