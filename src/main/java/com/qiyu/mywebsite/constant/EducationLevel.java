@@ -6,12 +6,12 @@ package com.qiyu.mywebsite.constant;
  */
 public enum EducationLevel {
     OTHER(0, "不限"),
-    ZZ(1, "普通用户"),
-    GZ(2, "普通用户"),
-    ZK(3, "普通用户"),
-    BK(4, "普通用户"),
-    SS(5, "普通用户"),
-    BS(6, "管理员");
+    ZZ(1, "中专"),
+    GZ(2, "高中"),
+    ZK(3, "专科"),
+    BK(4, "本科"),
+    SS(5, "硕士"),
+    BS(6, "博士");
 
 
     private Integer key;

@@ -5,8 +5,9 @@ import com.qiyu.mywebsite.constant.JobType;
 import com.qiyu.mywebsite.dao.JobInfoMapper;
 import com.qiyu.mywebsite.po.JobInfoPo;
 import com.qiyu.mywebsite.service.IJobInfoService;
+import com.qiyu.mywebsite.vo.BaseQueryVo;
 import com.qiyu.mywebsite.vo.DataListVo;
-import com.qiyu.mywebsite.vo.JobInfoListVo;
+import com.qiyu.mywebsite.vo.JobInfoVo;
 import com.qiyu.mywebsite.vo.QueryJobInfoListVo;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.BeanUtils;
@@ -36,17 +37,28 @@ public class JobInfoServiceImpl implements IJobInfoService {
             List<JobInfoPo> jobInfoPos = jobInfoMapper.selectOnCondition(vo);
             if (CollectionUtils.isNotEmpty(jobInfoPos)) {
                 //整理出参给前端
-                List<JobInfoListVo> jobInfoListVos = new ArrayList<JobInfoListVo>();
+                List<JobInfoVo> jobInfoVos = new ArrayList<JobInfoVo>();
                 for (JobInfoPo po : jobInfoPos) {
-                    JobInfoListVo listVo = new JobInfoListVo();
-                    BeanUtils.copyProperties(po, listVo);
-                    listVo.setJobTypeName(JobType.getValueByKey(po.getJobType()));
-                    listVo.setEducationName(EducationLevel.getValueByKey(po.getEducation()));
-                    jobInfoListVos.add(listVo);
+                    JobInfoVo infoVo = new JobInfoVo();
+                    BeanUtils.copyProperties(po, infoVo);
+                    infoVo.setJobTypeName(JobType.getValueByKey(po.getJobType()));
+                    infoVo.setEducationName(EducationLevel.getValueByKey(po.getEducation()));
+                    jobInfoVos.add(infoVo);
                 }
-                dataListVo.setRows(jobInfoListVos);
+                dataListVo.setRows(jobInfoVos);
             }
         }
         return dataListVo;
+    }
+
+    public JobInfoVo queryDetail(BaseQueryVo vo) {
+        JobInfoVo jobInfoVo = new JobInfoVo();
+        JobInfoPo jobInfoPo = jobInfoMapper.selectByPrimaryKey(vo.getId());
+        if (jobInfoPo != null) {
+            BeanUtils.copyProperties(jobInfoPo, jobInfoVo);
+            jobInfoVo.setJobTypeName(JobType.getValueByKey(jobInfoPo.getJobType()));
+            jobInfoVo.setEducationName(EducationLevel.getValueByKey(jobInfoPo.getEducation()));
+        }
+        return jobInfoVo;
     }
 }

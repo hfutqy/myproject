@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.qiyu.mywebsite.constant.BaseErrorCode;
 import com.qiyu.mywebsite.service.IJobInfoService;
 import com.qiyu.mywebsite.utils.ResponseVoUtils;
+import com.qiyu.mywebsite.vo.BaseQueryVo;
 import com.qiyu.mywebsite.vo.QueryJobInfoListVo;
 import com.qiyu.mywebsite.vo.ResponseVo;
 import org.slf4j.Logger;
@@ -29,10 +30,16 @@ public class JobInfoController extends BaseController{
     @Resource
     private IJobInfoService jobInfoService;
 
+    /**
+     * 查询求职信息列表
+     * @param request
+     * @param response
+     */
     @RequestMapping(value = "/queryList", method = RequestMethod.GET)
     public void queryJobInfoList(HttpServletRequest request, HttpServletResponse response) {
         ResponseVo vo = new ResponseVo();
         try {
+            //入参整合+校验
             String requestVo = getData(request, response);
             if (requestVo == null) {
                 vo = ResponseVoUtils.buildErrorResponseVo(BaseErrorCode.PARAM_ERROR);
@@ -40,6 +47,32 @@ public class JobInfoController extends BaseController{
             }
             QueryJobInfoListVo queryVo = JSON.parseObject(requestVo, QueryJobInfoListVo.class);
             vo = ResponseVoUtils.buildSuccessResponseVo(jobInfoService.queryList(queryVo));
+        } catch (Exception e) {
+            LOGGER.error("error in UserInfoController.queryUserInfo", e);
+            vo = ResponseVoUtils.buildErrorResponseVo(BaseErrorCode.SYSTEM_ERROR);
+        } finally {
+            this.sendData(response, vo);
+        }
+    }
+
+
+    /**
+     * 查询求职信息详情
+     * @param request
+     * @param response
+     */
+    @RequestMapping(value = "/queryDetail", method = RequestMethod.GET)
+    public void queryJobInfoDetail(HttpServletRequest request, HttpServletResponse response) {
+        ResponseVo vo = new ResponseVo();
+        try {
+            //入参整合+校验
+            String requestVo = getData(request, response);
+            if (requestVo == null) {
+                vo = ResponseVoUtils.buildErrorResponseVo(BaseErrorCode.PARAM_ERROR);
+                return;
+            }
+            BaseQueryVo queryVo = JSON.parseObject(requestVo, BaseQueryVo.class);
+            vo = ResponseVoUtils.buildSuccessResponseVo(jobInfoService.queryDetail(queryVo));
         } catch (Exception e) {
             LOGGER.error("error in UserInfoController.queryUserInfo", e);
             vo = ResponseVoUtils.buildErrorResponseVo(BaseErrorCode.SYSTEM_ERROR);

@@ -8,7 +8,7 @@ import java.util.Date;
  * 求职信息列表vo
  * Created by qiyu on 2018/3/4
  */
-public class JobInfoListVo {
+public class JobInfoVo {
     private Integer id;
 
     private String jobName;
