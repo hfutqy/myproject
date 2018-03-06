@@ -4,7 +4,7 @@ package com.qiyu.mywebsite.constant;
  * 错误码
  * Created by qiyu on 2018/2/27.
  */
-public enum ErrorCode {
+public enum BaseErrorCode {
     SUCCESS(10000, "成功"),
     SYSTEM_ERROR(10001, "系统错误"),
     PARAM_ERROR(10002, "参数非法"),
@@ -19,7 +19,7 @@ public enum ErrorCode {
     public String getValue() {
         return value;
     }
-    ErrorCode(int key, String value) {
+    BaseErrorCode(int key, String value) {
         this.key = key;
         this.value = value;
     }

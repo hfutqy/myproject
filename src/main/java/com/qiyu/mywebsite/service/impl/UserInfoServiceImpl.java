@@ -1,6 +1,6 @@
 package com.qiyu.mywebsite.service.impl;
 
-import com.qiyu.mywebsite.constant.ErrorCode;
+import com.qiyu.mywebsite.constant.BaseErrorCode;
 import com.qiyu.mywebsite.dao.UserInfoMapper;
 import com.qiyu.mywebsite.po.UserInfoPo;
 import com.qiyu.mywebsite.service.IUserInfoService;
@@ -37,7 +37,7 @@ public class UserInfoServiceImpl implements IUserInfoService {
         userInfoVo.setNickName(vo.getNickName());
         List<UserInfoPo> userInfoPos = userInfoMapper.selectOnCondition(userInfoVo);
         if (CollectionUtils.isNotEmpty(userInfoPos)) {
-            return ResponseVoUtils.buildErrorResponseVo(ErrorCode.NICKNAME_OCCUPIED);
+            return ResponseVoUtils.buildErrorResponseVo(BaseErrorCode.NICKNAME_OCCUPIED);
         }
         //密码加密处理
         userInfoVo.setPassword(MD5EncryptionUtils.string2MD5(vo.getPassword()));

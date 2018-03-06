@@ -4,7 +4,7 @@ package com.qiyu.mywebsite.vo;
  * 查询入参
  * Created by qiyu on 2018/3/5.
  */
-public class QueryJobInfoListVo {
+public class QueryJobInfoListVo extends BaseQueryVo{
     private Integer JobType;
 
     public Integer getJobType() {

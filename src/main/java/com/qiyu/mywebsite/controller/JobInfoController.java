@@ -1,9 +1,8 @@
 package com.qiyu.mywebsite.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.qiyu.mywebsite.constant.ErrorCode;
+import com.qiyu.mywebsite.constant.BaseErrorCode;
 import com.qiyu.mywebsite.service.IJobInfoService;
-import com.qiyu.mywebsite.service.IUserInfoService;
 import com.qiyu.mywebsite.utils.ResponseVoUtils;
 import com.qiyu.mywebsite.vo.QueryJobInfoListVo;
 import com.qiyu.mywebsite.vo.ResponseVo;
@@ -36,14 +35,14 @@ public class JobInfoController extends BaseController{
         try {
             String requestVo = getData(request, response);
             if (requestVo == null) {
-                vo = ResponseVoUtils.buildErrorResponseVo(ErrorCode.PARAM_ERROR);
+                vo = ResponseVoUtils.buildErrorResponseVo(BaseErrorCode.PARAM_ERROR);
                 return;
             }
             QueryJobInfoListVo queryVo = JSON.parseObject(requestVo, QueryJobInfoListVo.class);
             vo = ResponseVoUtils.buildSuccessResponseVo(jobInfoService.queryList(queryVo));
         } catch (Exception e) {
             LOGGER.error("error in UserInfoController.queryUserInfo", e);
-            vo = ResponseVoUtils.buildErrorResponseVo(ErrorCode.SYSTEM_ERROR);
+            vo = ResponseVoUtils.buildErrorResponseVo(BaseErrorCode.SYSTEM_ERROR);
         } finally {
             this.sendData(response, vo);
         }

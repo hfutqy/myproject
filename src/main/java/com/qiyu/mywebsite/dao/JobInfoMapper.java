@@ -1,11 +1,11 @@
 package com.qiyu.mywebsite.dao;
 
 import com.qiyu.mywebsite.po.JobInfoPo;
+import com.qiyu.mywebsite.vo.QueryJobInfoListVo;
+
+import java.util.List;
 
 public interface JobInfoMapper {
-    int deleteByPrimaryKey(Integer id);
-
-    int insert(JobInfoPo record);
 
     int insertSelective(JobInfoPo record);
 
@@ -13,5 +13,8 @@ public interface JobInfoMapper {
 
     int updateByPrimaryKeySelective(JobInfoPo record);
 
-    int updateByPrimaryKey(JobInfoPo record);
+    int countOnCondition(QueryJobInfoListVo queryVo);
+
+    List<JobInfoPo> selectOnCondition(QueryJobInfoListVo queryVo);
+
 }

@@ -29,4 +29,12 @@ public enum JobType {
         return value;
     }
 
+    public static String getValueByKey(int key){
+        for (JobType jobType : JobType.values()) {
+            if (jobType.getKey().equals(key)) {
+                return jobType.getValue();
+            }
+        }
+        return null;
+    }
 }

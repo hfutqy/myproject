@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration debug="true">
 
-	<!-- 使用这个slf4j包来打log，这是控制台输出ch.qos.logback.classic.encoder.PatternLayoutEncoder -->
-	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-		<layout class="ch.qos.logback.classic.PatternLayout">
-			<pattern>%d{yyyy-MM-dd HH:mm:ss,SSS} [%thread] %-5level %logger{36} -%msg%n</pattern>
-		</layout>
-	</appender>
+    <!-- 控制台输出日志 -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} -%msg%n</pattern>
+        </layout>
+    </appender>
 
-	<root level="DEBUG">
-		<appender-ref ref="STDOUT" />
-	</root>
+    <logger name="java.sql.Connection" level="DEBUG"/>
+    <logger name="java.sql.Statement" level="DEBUG"/>
+    <logger name="java.sql.PreparedStatement" level="DEBUG"/>
+    <logger name="java.sql.ResultSet" level="DEBUG"/>
+
+    <!--优先级从高到低分别是 ERROR、WARN、INFO、DEBUG-->
+    <root level="DEBUG">
+        <appender-ref ref="STDOUT"/>
+    </root>
 </configuration>

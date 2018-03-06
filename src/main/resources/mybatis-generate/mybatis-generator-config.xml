@@ -9,7 +9,7 @@
 
     <!-- 本地数据库驱动程序jar包的全路径 -->
     <classPathEntry
-            location="src/main/resources/config/mysql-connector-java.jar"/>
+            location="src/main/resources/mybatis-generate/mysql-connector-java.jar"/>
 
     <context id="context" targetRuntime="MyBatis3">
         <commentGenerator>
@@ -43,8 +43,12 @@
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
 
-        <!-- 相关表的配置 -->
-        <table tableName="job_info" domainObjectName="JobInfo" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+        <!-- 相关表的配置,去掉一些用不上的dao接口 -->
+        <table tableName="job_info" domainObjectName="JobInfo"
+               enableDeleteByPrimaryKey="false"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
                enableUpdateByExample="false"/>
     </context>
 </generatorConfiguration>

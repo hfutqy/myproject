@@ -1,6 +1,6 @@
 package com.qiyu.mywebsite.utils;
 
-import com.qiyu.mywebsite.constant.ErrorCode;
+import com.qiyu.mywebsite.constant.BaseErrorCode;
 import com.qiyu.mywebsite.vo.ResponseVo;
 
 /**
@@ -12,17 +12,17 @@ public class ResponseVoUtils {
     public static ResponseVo buildSuccessResponseVo(Object data){
         ResponseVo responseVo = new ResponseVo();
         responseVo.setSuccess(true);
-        responseVo.setErrorCode(ErrorCode.SUCCESS.getKey());
-        responseVo.setMessage(ErrorCode.SUCCESS.getValue());
+        responseVo.setErrorCode(BaseErrorCode.SUCCESS.getKey());
+        responseVo.setMessage(BaseErrorCode.SUCCESS.getValue());
         responseVo.setData(data);
         return responseVo;
     }
 
-    public static ResponseVo buildErrorResponseVo(ErrorCode errorCode){
+    public static ResponseVo buildErrorResponseVo(BaseErrorCode baseErrorCode){
         ResponseVo responseVo = new ResponseVo();
         responseVo.setSuccess(false);
-        responseVo.setErrorCode(errorCode.getKey());
-        responseVo.setMessage(errorCode.getValue());
+        responseVo.setErrorCode(baseErrorCode.getKey());
+        responseVo.setMessage(baseErrorCode.getValue());
         return responseVo;
     }
 }

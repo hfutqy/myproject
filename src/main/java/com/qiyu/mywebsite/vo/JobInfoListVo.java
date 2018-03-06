@@ -1,5 +1,7 @@
 package com.qiyu.mywebsite.vo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 /**
@@ -13,6 +15,8 @@ public class JobInfoListVo {
 
     private Integer jobType;
 
+    private String jobTypeName;
+
     private String jobLocation;
 
     private Integer workTimeBeg;
@@ -21,17 +25,14 @@ public class JobInfoListVo {
 
     private Integer education;
 
+    private String educationName;
+
     private Integer salaryBeg;
 
     private Integer salaryEnd;
 
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date releaseTime;
-
-    private Date addTime;
-
-    private Date updateTime;
-
-    private Byte delFlag;
 
     private String remark;
 
@@ -115,35 +116,27 @@ public class JobInfoListVo {
         this.releaseTime = releaseTime;
     }
 
-    public Date getAddTime() {
-        return addTime;
-    }
-
-    public void setAddTime(Date addTime) {
-        this.addTime = addTime;
-    }
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
-    }
-
-    public Byte getDelFlag() {
-        return delFlag;
-    }
-
-    public void setDelFlag(Byte delFlag) {
-        this.delFlag = delFlag;
-    }
-
     public String getRemark() {
         return remark;
     }
 
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    public String getJobTypeName() {
+        return jobTypeName;
+    }
+
+    public void setJobTypeName(String jobTypeName) {
+        this.jobTypeName = jobTypeName;
+    }
+
+    public String getEducationName() {
+        return educationName;
+    }
+
+    public void setEducationName(String educationName) {
+        this.educationName = educationName;
     }
 }
