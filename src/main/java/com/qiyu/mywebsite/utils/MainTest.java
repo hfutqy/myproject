@@ -15,9 +15,32 @@ public class MainTest {
      * 加密结果
      */
     public static void main(String[] agrs) {
-        String str = "123456";
-        String result = MD5EncryptionUtils.string2MD5(str);
-        System.out.print(result);
+        String str = "{sfadf{{afad{}";
+        char[] strC = str.toCharArray();
+        String endS = "";
+        if(strC.length > 1){
+            //头
+            if(strC[0] == '{' && strC[1] != '{'){
+                endS+='{';
+            }
+            //尾
+            if(strC[strC.length-1] == '{' && strC[strC.length-2] != '{'){
+                endS+='{';
+            }
+        }else if(strC.length==1 && strC[0]=='{'){
+            endS+='{';
+        }
+        //中间
+        for(int i=1; i<strC.length-1; i++){
+            if(strC[i] == '{' && strC[i+1] == '{'){
+                continue;
+            }else if(strC[i] == '{' && strC[i-1] == '{'){
+                continue;
+            }else if(strC[i] == '{'){
+                endS+='{';
+            }
+        }
+        System.out.print(endS);
     }
     /**
      * 快排
