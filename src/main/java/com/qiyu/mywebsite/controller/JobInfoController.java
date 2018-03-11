@@ -10,6 +10,7 @@ import com.qiyu.mywebsite.vo.ResponseVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -41,7 +42,7 @@ public class JobInfoController extends BaseController{
         try {
             //入参整合+校验
             String requestVo = getData(request, response);
-            if (requestVo == null) {
+            if (StringUtils.isEmpty(requestVo)) {
                 vo = ResponseVoUtils.buildErrorResponseVo(BaseErrorCode.PARAM_ERROR);
                 return;
             }

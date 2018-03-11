@@ -27,11 +27,11 @@ public class BaseRestService {
         } else {
             String method = this.request.getMethod();
             String ret;
-            if (!method.equalsIgnoreCase("GET") && !method.equalsIgnoreCase("DELETE")) {
+//            if (!method.equalsIgnoreCase("GET") && !method.equalsIgnoreCase("DELETE")) {
                 ret = this.getBodyData();
-            } else {
-                ret = this.request.getQueryString();
-            }
+//            } else {
+//                ret = this.request.getQueryString();
+//            }
             return null == ret ? null : new String(Base64Utils.decodeFromString(ret));
         }
     }

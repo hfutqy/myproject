@@ -3,7 +3,7 @@
                       http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1" metadata-complete="true">
 
-    <!-- 使用证书，使所有的路径要走https访问，端口8443 ???难道不需要？？？不加使用https:8080也可以访问-->
+    <!-- 使用证书，使所有的路径要走https访问，端口8443 ???加不加都没用；使用https:8080也可以访问-->
     <!--<security-constraint>-->
         <!--<web-resource-collection>-->
             <!--<web-resource-name>mywebsite</web-resource-name>-->

@@ -30,7 +30,10 @@ public class JobInfoServiceImpl implements IJobInfoService {
 
     public DataListVo queryList(QueryJobInfoListVo vo) {
         DataListVo dataListVo = new DataListVo();
-
+        //处理全部类型的工作
+        if (JobType.ALL.getKey().equals(vo.getJobType())) {
+            vo.setJobType(null);
+        }
         //获取求职信息 count、rows
         int count = jobInfoMapper.countOnCondition(vo);
         dataListVo.setCount(count);
