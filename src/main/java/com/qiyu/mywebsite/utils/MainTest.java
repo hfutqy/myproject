@@ -15,6 +15,14 @@ public class MainTest {
         System.out.print(xx);
     }
 
+    public int query(int a) {
+        return a;
+    }
+
+    public String query(int b,int c) {
+        return b+"";
+    }
+
     /**
      * 加密结果
      */

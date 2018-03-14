@@ -40,12 +40,12 @@ public class BaseRestService {
             } else {
                 ret = this.request.getQueryString();
             }
-            if(!StringUtils.isEmpty(ret)){
-                String result = ret.replace("data=","");
+            if (!StringUtils.isEmpty(ret)) {
+                String result = ret.replace("data=", "");
                 //处理URLEncoder数据
                 result = URLDecoder.decode(result, BaseConstants.UTF_8);
                 return new String(Base64Utils.decodeFromString(result));
-            }else {
+            } else {
                 return null;
             }
 
