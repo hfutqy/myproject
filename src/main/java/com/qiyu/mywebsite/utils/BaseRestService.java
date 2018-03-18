@@ -46,7 +46,6 @@ public class BaseRestService {
                 result = URLDecoder.decode(result, BaseConstants.UTF_8);
                 return new String(Base64Utils.decodeFromString(result));
             } else {
-
                 return null;
             }
 
