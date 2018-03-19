@@ -9,10 +9,11 @@ import java.net.URLDecoder;
  */
 public class MainTest {
     public static void main(String[] agrs) throws Exception {
-        String url = "data=xxx%3d";
-        String ret = url.replace("data=", "");
-        String xx = URLDecoder.decode(ret, BaseConstants.UTF_8);
-        System.out.print(xx);
+        String url = "data=xxx%3dd";
+        if (url.length() > 10) {
+            url = url.substring(0, 10);
+        }
+        System.out.print(url);
     }
 
     public int query(int a) {
