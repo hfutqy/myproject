@@ -52,7 +52,6 @@ public class BaseRestService {
         }
     }
 
-
     private String getBodyData() {
         StringBuilder data = new StringBuilder();
         try {
