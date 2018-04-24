@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.qiyu.mywebsite.dao.UserInfoMapper">
-    <resultMap id="BaseResultMap" type="com.qiyu.mywebsite.po.UserInfoPo">
+<mapper namespace="com.hfutse.mywebsite.dao.UserInfoMapper">
+    <resultMap id="BaseResultMap" type="com.hfutse.mywebsite.po.UserInfoPo">
         <id column="id" property="id" jdbcType="INTEGER"/>
         <id column="nick_name" property="nickName" jdbcType="VARCHAR"/>
         <id column="password" property="password" jdbcType="VARCHAR"/>
@@ -19,7 +19,7 @@
         and del_flag = 0
     </select>
 
-    <select id="selectOnCondition" resultMap="BaseResultMap" parameterType="com.qiyu.mywebsite.vo.UserInfoVo">
+    <select id="selectOnCondition" resultMap="BaseResultMap" parameterType="com.hfutse.mywebsite.vo.UserInfoVo">
         select
         <include refid="Base_Column_List"/>
         from user_info
@@ -33,7 +33,7 @@
         and del_flag = 0
     </select>
 
-    <insert id="insertOnCondition" parameterType="com.qiyu.mywebsite.vo.UserInfoVo">
+    <insert id="insertOnCondition" parameterType="com.hfutse.mywebsite.vo.UserInfoVo">
         <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
             SELECT LAST_INSERT_ID()
         </selectKey>

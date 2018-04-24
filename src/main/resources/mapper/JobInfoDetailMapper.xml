@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.qiyu.mywebsite.dao.JobInfoDetailMapper">
-  <resultMap id="BaseResultMap" type="com.qiyu.mywebsite.po.JobInfoDetailPo">
+<mapper namespace="com.hfutse.mywebsite.dao.JobInfoDetailMapper">
+  <resultMap id="BaseResultMap" type="com.hfutse.mywebsite.po.JobInfoDetailPo">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="job_id" jdbcType="INTEGER" property="jobId" />
     <result column="job_company_descrip" jdbcType="VARCHAR" property="jobCompanyDescrip" />
@@ -26,7 +26,7 @@
     from job_info_detail
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <insert id="insert" parameterType="com.qiyu.mywebsite.po.JobInfoDetailPo">
+  <insert id="insert" parameterType="com.hfutse.mywebsite.po.JobInfoDetailPo">
     insert into job_info_detail (id, job_id, job_company_descrip, 
       work_place, job_poster, job_poster_position, 
       add_time, update_time, del_flag, 
@@ -38,7 +38,7 @@
       #{remark,jdbcType=VARCHAR}, #{jobCompany,jdbcType=LONGVARCHAR}, #{jobDescrip,jdbcType=LONGVARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.qiyu.mywebsite.po.JobInfoDetailPo">
+  <insert id="insertSelective" parameterType="com.hfutse.mywebsite.po.JobInfoDetailPo">
     insert into job_info_detail
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -117,7 +117,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.qiyu.mywebsite.po.JobInfoDetailPo">
+  <update id="updateByPrimaryKeySelective" parameterType="com.hfutse.mywebsite.po.JobInfoDetailPo">
     update job_info_detail
     <set>
       <if test="jobId != null">

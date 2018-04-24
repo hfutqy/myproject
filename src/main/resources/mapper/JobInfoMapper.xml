@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.qiyu.mywebsite.dao.JobInfoMapper">
-  <resultMap id="BaseResultMap" type="com.qiyu.mywebsite.po.JobInfoPo">
+<mapper namespace="com.hfutse.mywebsite.dao.JobInfoMapper">
+  <resultMap id="BaseResultMap" type="com.hfutse.mywebsite.po.JobInfoPo">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="job_name" jdbcType="VARCHAR" property="jobName" />
     <result column="job_type" jdbcType="INTEGER" property="jobType" />
@@ -27,7 +27,7 @@
     from job_info
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <insert id="insertSelective" parameterType="com.qiyu.mywebsite.po.JobInfoPo">
+  <insert id="insertSelective" parameterType="com.hfutse.mywebsite.po.JobInfoPo">
     insert into job_info
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -118,7 +118,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.qiyu.mywebsite.po.JobInfoPo">
+  <update id="updateByPrimaryKeySelective" parameterType="com.hfutse.mywebsite.po.JobInfoPo">
     update job_info
     <set>
       <if test="jobName != null">
@@ -164,7 +164,7 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
 
-  <select id="countOnCondition" parameterType="com.qiyu.mywebsite.vo.QueryJobInfoListVo" resultType="java.lang.Integer">
+  <select id="countOnCondition" parameterType="com.hfutse.mywebsite.vo.QueryJobInfoListVo" resultType="java.lang.Integer">
     select count(*)
     from job_info
     <where>
@@ -178,7 +178,7 @@
     </where>
   </select>
 
-  <select id="selectOnCondition" parameterType="com.qiyu.mywebsite.vo.QueryJobInfoListVo" resultMap="BaseResultMap">
+  <select id="selectOnCondition" parameterType="com.hfutse.mywebsite.vo.QueryJobInfoListVo" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from job_info
