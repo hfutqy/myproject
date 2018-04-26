@@ -21,10 +21,7 @@ import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
 import java.nio.channels.FileChannel;
 import java.nio.charset.CoderResult;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * test controller
@@ -47,29 +44,50 @@ public class TestController extends BaseController{
 
 
     public static void main(String[] args) throws Exception{
-        //方法一
-        File file = new File("E:\\var\\test.txt");
-        File fileEnd = new File("E:\\var\\log\\test.txt");
-        FileChannel inputChannel = null;
-        FileChannel outputChannel = null;
-        try {
-            inputChannel = new FileInputStream(file).getChannel();
-            outputChannel = new FileOutputStream(fileEnd).getChannel();
-            outputChannel.transferFrom(inputChannel, 0, inputChannel.size());
-        } catch (IOException e){
-            e.printStackTrace();
-        }finally {
-            inputChannel.close();
-            outputChannel.close();
-        }
-        //方法二
-        copyFileUsingApacheCommonsIO(file, fileEnd);
-        String str = "";
-        StringBuffer a = new StringBuffer("");
-        StringBuilder aaaa = new StringBuilder("");
-        List<InputStream> xx = new LinkedList<InputStream>();
+
+        String a = "123";
+        String b = "123";
+        List<String> aList = new ArrayList<String>();
+        aList.add(a);
+        List<String> bList = new ArrayList<String>();
+        bList.add(b);
+        System.out.println(aList.hashCode() == bList.hashCode());
+        System.out.println(aList.equals(bList));
+
+        Map<Integer, Integer> aMap = new HashMap<Integer, Integer>();
+        aMap.put(1, 2);
+
+        Integer xxxa = 12;
+        change(aList);
+        System.out.println(aList);
+
+
+//        //方法一
+//        File file = new File("E:\\var\\test.txt");
+//        File fileEnd = new File("E:\\var\\log\\test.txt");
+//        FileChannel inputChannel = null;
+//        FileChannel outputChannel = null;
+//        try {
+//            inputChannel = new FileInputStream(file).getChannel();
+//            outputChannel = new FileOutputStream(fileEnd).getChannel();
+//            outputChannel.transferFrom(inputChannel, 0, inputChannel.size());
+//        } catch (IOException e){
+//            e.printStackTrace();
+//        }finally {
+//            inputChannel.close();
+//            outputChannel.close();
+//        }
+//        //方法二
+//        copyFileUsingApacheCommonsIO(file, fileEnd);
+//        String str = "";
+//        StringBuffer a = new StringBuffer("");
+//        StringBuilder aaaa = new StringBuilder("");
+//        List<InputStream> xx = new LinkedList<InputStream>();
     }
 
+    static void change(List a){
+        a.add(12);
+    }
 
 
     /**
