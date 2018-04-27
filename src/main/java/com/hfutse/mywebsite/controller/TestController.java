@@ -29,7 +29,7 @@ import java.util.*;
  */
 @Controller
 @RequestMapping("/test")
-public class TestController extends BaseController{
+public class TestController extends BaseController {
 
 
     @RequestMapping(value = "/test", method = RequestMethod.GET)
@@ -42,8 +42,7 @@ public class TestController extends BaseController{
     }
 
 
-
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
 
         String a = "123";
         String b = "123";
@@ -61,43 +60,36 @@ public class TestController extends BaseController{
         change(aList);
         System.out.println(aList);
 
-
-//        //方法一
-//        File file = new File("E:\\var\\test.txt");
-//        File fileEnd = new File("E:\\var\\log\\test.txt");
-//        FileChannel inputChannel = null;
-//        FileChannel outputChannel = null;
-//        try {
-//            inputChannel = new FileInputStream(file).getChannel();
-//            outputChannel = new FileOutputStream(fileEnd).getChannel();
-//            outputChannel.transferFrom(inputChannel, 0, inputChannel.size());
-//        } catch (IOException e){
-//            e.printStackTrace();
-//        }finally {
-//            inputChannel.close();
-//            outputChannel.close();
-//        }
-//        //方法二
-//        copyFileUsingApacheCommonsIO(file, fileEnd);
-//        String str = "";
-//        StringBuffer a = new StringBuffer("");
-//        StringBuilder aaaa = new StringBuilder("");
-//        List<InputStream> xx = new LinkedList<InputStream>();
     }
-
-    static void change(List a){
+    static void change(List a) {
         a.add(12);
     }
 
-
     /**
      * 文件copy方法
+     *
      * @param source
      * @param dest
      * @throws IOException
      */
-    private static void copyFileUsingApacheCommonsIO(File source, File dest)
+    private static void copyFile1(File source, File dest)
             throws IOException {
         FileCopyUtils.copy(source, dest);
+    }
+
+    private static void copyFile2(File source, File dest)
+            throws IOException {
+        FileInputStream fileInputStream = new FileInputStream(source);
+        FileInputStream fileInputStreamDest = new FileInputStream(dest);
+        try {
+            FileChannel inputChannel = fileInputStream.getChannel();
+            FileChannel outputChannel = fileInputStreamDest.getChannel();
+            outputChannel.transferFrom(inputChannel, 0, inputChannel.size());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            fileInputStream.close();
+            fileInputStreamDest.close();
+        }
     }
 }
