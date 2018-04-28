@@ -1,9 +1,5 @@
 package com.hfutse.mywebsite.controller;
 
-import ch.qos.logback.core.encoder.Encoder;
-import ch.qos.logback.core.util.FileUtil;
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.hfutse.mywebsite.utils.ResponseVoUtils;
 import com.hfutse.mywebsite.vo.ResponseVo;
 import org.springframework.stereotype.Controller;
@@ -11,18 +7,15 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.util.StreamUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import sun.nio.cs.UnicodeEncoder;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
-import java.net.URLDecoder;
-import java.nio.ByteBuffer;
-import java.nio.CharBuffer;
 import java.nio.channels.FileChannel;
-import java.nio.charset.CoderResult;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * test controller
