@@ -8,6 +8,7 @@ import com.hfutse.mywebsite.utils.ResponseVoUtils;
 import com.hfutse.mywebsite.vo.ResponseVo;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.util.StreamUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import sun.nio.cs.UnicodeEncoder;
@@ -61,6 +62,7 @@ public class TestController extends BaseController {
         System.out.println(aList);
 
     }
+
     static void change(List a) {
         a.add(12);
     }
@@ -86,10 +88,22 @@ public class TestController extends BaseController {
             FileChannel outputChannel = fileInputStreamDest.getChannel();
             outputChannel.transferFrom(inputChannel, 0, inputChannel.size());
         } catch (IOException e) {
-            e.printStackTrace();
         } finally {
-            fileInputStream.close();
-            fileInputStreamDest.close();
+            try {
+                fileInputStream.close();
+            } catch (IOException e) {
+            }
+            try {
+                fileInputStreamDest.close();
+            } catch (IOException e) {
+            }
         }
+    }
+
+    private static void copyFile3(File source, File dest)
+            throws IOException {
+        InputStream in = new FileInputStream(source);
+        OutputStream out = new FileOutputStream(dest);
+        StreamUtils.copy(in, out);
     }
 }
